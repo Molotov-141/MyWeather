@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Weather</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Aller au contenu principal</a>
+
+  <div class="wrapper">
+
+    <header>
+      </div>
+      <h1>My Weather</h1>
+      <p class="subtitle">Prévisions météo par commune</p>
+    </header>
+
+    <main id="main">
+      <section class="form-card" aria-label="Formulaire de recherche météo">
+
+        <!-- Clé API -->
+        <div class="field-group">
+          <label for="apiKey">Clé API MétéoConcept</label>
+          <input
+            type="password"
+            id="apiKey"
+            name="apiKey"
+            placeholder="Entrez votre token MétéoConcept"
+            autocomplete="off"
+            aria-required="true"
+            aria-describedby="apiKey-hint"
+          />
+          <p class="input-hint" id="apiKey-hint">
+            Obtenez une clé gratuite sur
+            <a href="https://api.meteo-concept.com/" target="_blank" rel="noopener noreferrer">api.meteo-concept.com</a>
+          </p>
+        </div>
+
+        <!-- Code postal -->
+        <div class="field-group">
+          <label for="codePostal">Code postal</label>
+          <input
+            type="text"
+            id="codePostal"
+            name="codePostal"
+            placeholder="Ex : 75001"
+            maxlength="5"
+            pattern="[0-9]{5}"
+            inputmode="numeric"
+            autocomplete="postal-code"
+            aria-required="true"
+            aria-describedby="cp-hint"
+          />
+          <p class="input-hint" id="cp-hint">Saisissez un code postal à 5 chiffres</p>
+        </div>
+
+        <!-- Commune -->
+        <div class="field-group">
+          <label for="commune">Commune</label>
+          <select id="commune" name="commune" disabled aria-required="true" aria-live="polite">
+            <option value="">— Saisissez d'abord un code postal —</option>
+          </select>
+        </div>
+
+        <!-- Submit -->
+        <button
+          type="button"
+          id="searchBtn"
+          class="btn-primary"
+          disabled
+          aria-label="Rechercher la météo pour la commune sélectionnée"
+        >
+          Voir la météo
+        </button>
+
+        <!-- Erreur -->
+        <div id="errorMsg" class="error-msg" role="alert" aria-live="assertive"></div>
+
+      </section>
+
+      <!-- Loader -->
+      <div id="loader" class="loader-wrap" aria-live="polite" aria-label="Chargement en cours">
+        <div class="spinner" aria-hidden="true"></div>
+        <span>Chargement des données météo…</span>
+      </div>
+
+      <!-- Résultats -->
+      <section id="results" style="display:none;" aria-label="Résultats météo" aria-live="polite"></section>
+
+    </main>
+
+    <footer>
+      <p>Données météo fournies par <a href="https://api.meteo-concept.com/" style="color:var(--accent);text-decoration:none" target="_blank" rel="noopener noreferrer">MétéoConcept</a> &bull; Découpage administratif <a href="https://geo.api.gouv.fr/" style="color:var(--accent);text-decoration:none" target="_blank" rel="noopener noreferrer">geo.api.gouv.fr</a></p>
+    </footer>
+
+  </div>
+
+  <script src="app.js" defer></script>
+
+</body>
+</html>
