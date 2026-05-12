@@ -1,0 +1,466 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=VT323&display=swap');
+
+/* reset basique */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ────────────────────────────────
+   BODY : fond jaune criard, grain
+──────────────────────────────── */
+body {
+  font-family: 'Special Elite', cursive;
+  background-color: #f5e642;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(0,0,0,0.03) 4px,
+      rgba(0,0,0,0.03) 8px
+    );
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* ────────────────────────────────
+   SKIP LINK
+──────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 4px;
+  background: #ff2d2d;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  padding: 4px 10px;
+  border: 3px solid #000;
+  z-index: 9999;
+}
+.skip-link:focus { top: 4px; }
+
+/* ────────────────────────────────
+   WRAPPER
+──────────────────────────────── */
+.wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+/* ────────────────────────────────
+   HEADER
+──────────────────────────────── */
+header {
+  margin-bottom: 2.5rem;
+  border: 5px solid #1a1a1a;
+  background: #ff2d2d;
+  padding: 1.2rem 1.5rem 1rem;
+  box-shadow: 8px 8px 0 #1a1a1a;
+  transform: rotate(-1.5deg);
+  position: relative;
+}
+
+header::before {
+  content: '///';
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  color: rgba(0,0,0,0.25);
+  letter-spacing: 2px;
+}
+
+.logo { display: block; margin-bottom: 0.2rem; }
+
+.logo-icon {
+  font-size: 2.8rem;
+  display: inline-block;
+  transform: rotate(12deg);
+  filter: none;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.8rem, 10vw, 5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #f5e642;
+  text-shadow:
+    4px 4px 0 #1a1a1a,
+    -2px -2px 0 #1a1a1a;
+  line-height: 0.9;
+}
+
+.subtitle {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  color: #1a1a1a;
+  letter-spacing: 0.1em;
+  margin-top: 0.4rem;
+  text-transform: uppercase;
+}
+
+/* ────────────────────────────────
+   FORM CARD
+──────────────────────────────── */
+.form-card {
+  background: #fff;
+  border: 4px solid #1a1a1a;
+  box-shadow: 10px 10px 0 #1a1a1a;
+  padding: 1.75rem 1.5rem;
+  transform: rotate(0.5deg);
+  margin-bottom: 1.5rem;
+}
+
+/* ────────────────────────────────
+   CHAMPS
+──────────────────────────────── */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.3rem;
+}
+
+label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  background: #f5e642;
+  border: 3px solid #1a1a1a;
+  border-radius: 0;
+  color: #1a1a1a;
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  padding: 0.6rem 0.8rem;
+  width: 100%;
+  outline: none;
+  appearance: none;
+  transition: background 0.1s;
+  box-shadow: 3px 3px 0 #1a1a1a;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: rgba(26,26,26,0.45);
+  font-style: italic;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  background: #c8f542;
+  border-color: #ff2d2d;
+  box-shadow: 3px 3px 0 #ff2d2d;
+}
+
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 7 6-7' stroke='%231a1a1a' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  padding-right: 2.5rem;
+}
+
+select option { background: #f5e642; color: #1a1a1a; }
+
+select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background-color: #ddd;
+}
+
+.input-hint {
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 0.1rem;
+}
+
+.input-hint a {
+  color: #ff2d2d;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* ────────────────────────────────
+   BOUTON
+──────────────────────────────── */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  background: #ff2d2d;
+  color: #fff;
+  border: 4px solid #1a1a1a;
+  border-radius: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #1a1a1a;
+  transition: transform 0.08s, box-shadow 0.08s;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1a1a1a;
+  color: #f5e642;
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #ff2d2d;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 1px 1px 0 #1a1a1a;
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: #999;
+  box-shadow: 3px 3px 0 #555;
+}
+
+/* ────────────────────────────────
+   MESSAGE D'ERREUR
+──────────────────────────────── */
+.error-msg {
+  display: none;
+  background: #ff2d2d;
+  border: 3px solid #1a1a1a;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  padding: 0.6rem 0.9rem;
+  margin-top: 1rem;
+  box-shadow: 4px 4px 0 #1a1a1a;
+  transform: rotate(-0.5deg);
+}
+
+.error-msg::before { content: '⚠ '; }
+
+.error-msg.active { display: block; }
+
+/* ────────────────────────────────
+   LOADER
+──────────────────────────────── */
+.loader-wrap {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.3rem;
+  color: #1a1a1a;
+  letter-spacing: 0.05em;
+}
+
+.loader-wrap.active { display: flex; }
+
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 4px solid #1a1a1a;
+  border-top-color: #ff2d2d;
+  border-radius: 0;
+  animation: spin 0.5s steps(8) infinite;
+}
+
+/* ────────────────────────────────
+   RÉSULTATS
+──────────────────────────────── */
+#results { margin-top: 1.5rem; }
+
+.result-location {
+  background: #1a1a1a;
+  color: #f5e642;
+  border: 4px solid #1a1a1a;
+  padding: 1rem 1.2rem 0.8rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 8px 8px 0 #ff2d2d;
+  transform: rotate(1deg);
+  text-align: left;
+}
+
+.result-location h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #f5e642;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #ff2d2d;
+}
+
+.result-location .result-date {
+  font-family: 'VT323', monospace;
+  font-size: 1.05rem;
+  color: #ccc;
+  margin-top: 0.3rem;
+  letter-spacing: 0.05em;
+}
+
+/* ────────────────────────────────
+   GRILLE MÉTÉO
+──────────────────────────────── */
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+
+@media (max-width: 420px) {
+  .weather-grid { grid-template-columns: 1fr; }
+}
+
+/* Cartes légèrement de travers */
+.weather-card {
+  background: #fff;
+  border: 4px solid #1a1a1a;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.weather-card.temp-min {
+  background: #d4f0ff;
+  box-shadow: 6px 6px 0 #1a1a1a;
+  transform: rotate(-1.2deg);
+}
+.weather-card.temp-max {
+  background: #ffe8c0;
+  box-shadow: 6px 6px 0 #1a1a1a;
+  transform: rotate(0.8deg);
+}
+.weather-card.rain {
+  background: #c8d8ff;
+  box-shadow: 6px 6px 0 #1a1a1a;
+  transform: rotate(-0.5deg);
+}
+.weather-card.sun {
+  background: #fffaaa;
+  box-shadow: 6px 6px 0 #1a1a1a;
+  transform: rotate(1.3deg);
+}
+
+.weather-card:hover {
+  transform: rotate(0deg) scale(1.03) !important;
+  box-shadow: 9px 9px 0 #ff2d2d !important;
+  z-index: 2;
+}
+
+/* étiquette "tampon" en haut à droite */
+.weather-card::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  background: #ff2d2d;
+  color: #fff;
+  font-family: 'VT323', monospace;
+  font-size: 0.8rem;
+  padding: 2px 7px;
+  border: 2px solid #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card-label {
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
+.card-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #1a1a1a;
+  letter-spacing: 0.03em;
+}
+
+.card-value.cold { color: #0055cc; }
+.card-value.warm { color: #cc4400; }
+.card-value.blue { color: #1144bb; }
+.card-value.gold { color: #996600; }
+
+.card-unit {
+  font-family: 'VT323', monospace;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.15rem;
+  text-transform: uppercase;
+}
+
+/* ────────────────────────────────
+   DIVIDER
+──────────────────────────────── */
+.divider {
+  height: 5px;
+  background: repeating-linear-gradient(
+    90deg,
+    #1a1a1a 0px,
+    #1a1a1a 12px,
+    transparent 12px,
+    transparent 18px
+  );
+  margin: 2rem 0;
+  border: none;
+}
+
+/* ────────────────────────────────
+   FOCUS VISIBLE
+──────────────────────────────── */
+:focus-visible {
+  outline: 3px dashed #ff2d2d;
+  outline-offset: 3px;
+}
+
+/* ────────────────────────────────
+   FOOTER
+──────────────────────────────── */
+footer {
+  text-align: center;
+  margin-top: 2.5rem;
+  font-family: 'VT323', monospace;
+  font-size: 0.95rem;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+footer a {
+  color: #ff2d2d;
+  text-decoration: underline;
+}
+
+/* ────────────────────────────────
+   ANIMATIONS
+──────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

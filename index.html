@@ -21,24 +21,6 @@
     <main id="main">
       <section class="form-card" aria-label="Formulaire de recherche météo">
 
-        <!-- Clé API -->
-        <div class="field-group">
-          <label for="apiKey">Clé API MétéoConcept</label>
-          <input
-            type="password"
-            id="apiKey"
-            name="apiKey"
-            placeholder="Entrez votre token MétéoConcept"
-            autocomplete="off"
-            aria-required="true"
-            aria-describedby="apiKey-hint"
-          />
-          <p class="input-hint" id="apiKey-hint">
-            Obtenez une clé gratuite sur
-            <a href="https://api.meteo-concept.com/" target="_blank" rel="noopener noreferrer">api.meteo-concept.com</a>
-          </p>
-        </div>
-
         <!-- Code postal -->
         <div class="field-group">
           <label for="codePostal">Code postal</label>
@@ -70,7 +52,7 @@
           type="button"
           id="searchBtn"
           class="btn-primary"
-          disabled
+          enabled='true'
           aria-label="Rechercher la météo pour la commune sélectionnée"
         >
           Voir la météo
@@ -98,6 +80,7 @@
 
   </div>
 
+  <script src="config.js"></script>
   <script src="app.js" defer></script>
 
 </body>
