@@ -1,13 +1,10 @@
-/* ── Éléments DOM ── */
 const cpInput   = document.getElementById('codePostal');
 const communeEl = document.getElementById('commune');
 const searchBtn = document.getElementById('searchBtn');
-const API_KEY  = document.getElementById('apiKey');
 const errorMsg  = document.getElementById('errorMsg');
 const loader    = document.getElementById('loader');
 const resultsEl = document.getElementById('results');
 
-/* ── Utilitaires ── */
 const showError = (msg) => {
   errorMsg.textContent = msg;
   errorMsg.classList.add('active');
@@ -23,14 +20,12 @@ const setLoading = (on) => {
   searchBtn.disabled = on;
 };
 
-/* ── Chargement des communes ── */
 let cpTimeout = null;
 
 cpInput.addEventListener('input', () => {
   const cp = cpInput.value.trim();
   hideError();
 
-  // Réinitialiser la liste
   communeEl.innerHTML = '<option value="">— Sélectionnez une commune —</option>';
   communeEl.disabled = true;
   searchBtn.disabled = true;
@@ -58,14 +53,13 @@ async function fetchCommunes(cp) {
       .sort((a, b) => a.nom.localeCompare(b.nom))
       .forEach(c => {
         const opt = document.createElement('option');
-        opt.value = c.code; // code INSEE
+        opt.value = c.code;
         opt.textContent = c.nom;
         communeEl.appendChild(opt);
       });
 
     communeEl.disabled = false;
 
-    // Si une seule commune, pré-sélectionner
     if (communes.length === 1) {
       communeEl.selectedIndex = 1;
       updateSearchBtn();
@@ -78,17 +72,20 @@ async function fetchCommunes(cp) {
 }
 
 communeEl.addEventListener('change', updateSearchBtn);
-API_KEY.addEventListener('input', updateSearchBtn);
 
 function updateSearchBtn() {
-  const ready = communeEl.value && API_KEY;
+  const ready = communeEl.value && communeEl.value !== "";
   searchBtn.disabled = !ready;
 }
 
-/* ── Recherche météo ── */
 searchBtn.addEventListener('click', fetchWeather);
 
 async function fetchWeather() {
+  if (typeof API_KEY === 'undefined' || API_KEY === "VOTRE_CLÉ_ICI") {
+    showError("Clé API manquante. Veuillez configurer config.js.");
+    return;
+  }
+
   hideError();
   resultsEl.style.display = 'none';
   resultsEl.innerHTML = '';
@@ -120,13 +117,11 @@ async function fetchWeather() {
   }
 }
 
-/* ── Affichage des résultats ── */
 function renderResults(ville, f) {
   const today   = new Date();
   const opts    = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const dateStr = today.toLocaleDateString('fr-FR', opts);
 
-  // Valeurs affichées
   const tmin   = f.tmin      !== undefined ? f.tmin      + '°C' : 'N/D';
   const tmax   = f.tmax      !== undefined ? f.tmax      + '°C' : 'N/D';
   const pluie  = f.probarain !== undefined ? f.probarain + ' %' : 'N/D';
@@ -138,25 +133,25 @@ function renderResults(ville, f) {
       <p class="result-date">${dateStr}</p>
     </div>
     <div class="weather-grid" role="list">
-      <article class="weather-card temp-min" role="listitem" aria-label="Température minimale : ${tmin}">
+      <article class="weather-card temp-min" role="listitem" aria-label="Température minimale : ${tmin}" style="transform: rotate(${Math.random() * 4 - 2}deg)">
         <span class="card-icon" aria-hidden="true">🌡️</span>
         <p class="card-label">Temp. minimale</p>
         <p class="card-value cold">${tmin}</p>
         <p class="card-unit">Celsius</p>
       </article>
-      <article class="weather-card temp-max" role="listitem" aria-label="Température maximale : ${tmax}">
+      <article class="weather-card temp-max" role="listitem" aria-label="Température maximale : ${tmax}" style="transform: rotate(${Math.random() * 4 - 2}deg)">
         <span class="card-icon" aria-hidden="true">🔥</span>
         <p class="card-label">Temp. maximale</p>
         <p class="card-value warm">${tmax}</p>
         <p class="card-unit">Celsius</p>
       </article>
-      <article class="weather-card rain" role="listitem" aria-label="Probabilité de pluie : ${pluie}">
+      <article class="weather-card rain" role="listitem" aria-label="Probabilité de pluie : ${pluie}" style="transform: rotate(${Math.random() * 4 - 2}deg)">
         <span class="card-icon" aria-hidden="true">🌧️</span>
         <p class="card-label">Probabilité de pluie</p>
         <p class="card-value blue">${pluie}</p>
         <p class="card-unit">Pourcentage</p>
       </article>
-      <article class="weather-card sun" role="listitem" aria-label="Ensoleillement : ${soleil}">
+      <article class="weather-card sun" role="listitem" aria-label="Ensoleillement : ${soleil}" style="transform: rotate(${Math.random() * 4 - 2}deg)">
         <span class="card-icon" aria-hidden="true">☀️</span>
         <p class="card-label">Ensoleillement</p>
         <p class="card-value gold">${soleil}</p>

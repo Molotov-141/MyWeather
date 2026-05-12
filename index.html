@@ -10,10 +10,10 @@
 
   <a href="#main" class="skip-link">Aller au contenu principal</a>
 
+  <div class="noise"></div>
   <div class="wrapper">
 
     <header>
-      </div>
       <h1>My Weather</h1>
       <p class="subtitle">Prévisions météo par commune</p>
     </header>
@@ -21,7 +21,6 @@
     <main id="main">
       <section class="form-card" aria-label="Formulaire de recherche météo">
 
-        <!-- Code postal -->
         <div class="field-group">
           <label for="codePostal">Code postal</label>
           <input
@@ -39,7 +38,6 @@
           <p class="input-hint" id="cp-hint">Saisissez un code postal à 5 chiffres</p>
         </div>
 
-        <!-- Commune -->
         <div class="field-group">
           <label for="commune">Commune</label>
           <select id="commune" name="commune" disabled aria-required="true" aria-live="polite">
@@ -47,29 +45,25 @@
           </select>
         </div>
 
-        <!-- Submit -->
         <button
           type="button"
           id="searchBtn"
           class="btn-primary"
-          enabled='true'
+          disabled
           aria-label="Rechercher la météo pour la commune sélectionnée"
         >
           Voir la météo
         </button>
 
-        <!-- Erreur -->
         <div id="errorMsg" class="error-msg" role="alert" aria-live="assertive"></div>
 
       </section>
 
-      <!-- Loader -->
       <div id="loader" class="loader-wrap" aria-live="polite" aria-label="Chargement en cours">
         <div class="spinner" aria-hidden="true"></div>
         <span>Chargement des données météo…</span>
       </div>
 
-      <!-- Résultats -->
       <section id="results" style="display:none;" aria-label="Résultats météo" aria-live="polite"></section>
 
     </main>
