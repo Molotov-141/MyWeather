@@ -2,7 +2,7 @@
 const cpInput   = document.getElementById('codePostal');
 const communeEl = document.getElementById('commune');
 const searchBtn = document.getElementById('searchBtn');
-const apiKeyEl  = document.getElementById('apiKey');
+const API_KEY  = document.getElementById('apiKey');
 const errorMsg  = document.getElementById('errorMsg');
 const loader    = document.getElementById('loader');
 const resultsEl = document.getElementById('results');
@@ -78,10 +78,10 @@ async function fetchCommunes(cp) {
 }
 
 communeEl.addEventListener('change', updateSearchBtn);
-apiKeyEl.addEventListener('input', updateSearchBtn);
+API_KEY.addEventListener('input', updateSearchBtn);
 
 function updateSearchBtn() {
-  const ready = communeEl.value && apiKeyEl.value.trim();
+  const ready = communeEl.value && API_KEY;
   searchBtn.disabled = !ready;
 }
 
@@ -94,7 +94,7 @@ async function fetchWeather() {
   resultsEl.innerHTML = '';
   setLoading(true);
 
-  const token    = apiKeyEl.value.trim();
+  const token    = API_KEY;
   const insee    = communeEl.value;
   const nomVille = communeEl.options[communeEl.selectedIndex].textContent;
 
